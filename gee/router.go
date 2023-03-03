@@ -48,7 +48,9 @@ func (r *router) addRoute(method string, pattern string, handler HandlerFunc) {
 		r.roots[method] = &node{}
 	}
 
+	// insert pattern to trie
 	r.roots[method].insert(pattern, parts, 0)
+	// add handler function to handlers map
 	r.handlers[key] = handler
 }
 
